@@ -12,7 +12,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 
-#include 'DRV8461_Register_Addresses.h' //includes stdint.h
+#include "DRV8461_Register_Address_Locations.h" //includes stdint.h
 
 
 ///FROM POLOLU FILE**********************************************

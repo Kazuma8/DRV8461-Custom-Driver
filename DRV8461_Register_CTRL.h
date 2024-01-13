@@ -1,122 +1,7 @@
-///Header File with all Register Addresses for DRV8461.
+#ifndef DRV8461_Register_CTRL
+#define DRV8461_Register_CTRL
 
-#ifndef DRV8461_Register_Addresses
-#define DRV8461_Register_Addresses
-
-#include <stdint.h>
-
-
-// REGISTER ADDRESSES ************************************************************************************************// 
-enum class DRV8461_REG_ADDR : uint8_t {
-  DRV8461_REG_FAULT        = 0x00,            // Fault status register.
-  DRV8461_REG_DIAG1        = 0x01,            // DIAG status 1.
-  DRV8461_REG_DIAG2        = 0x02,            // DIAG status 2.
-  DRV8461_REG_DIAG3        = 0x03,            // DIAG status 3.
-  DRV8461_REG_CTRL1        = 0x04,            // Control register 1.
-  DRV8461_REG_CTRL2        = 0x05,            // Control register 2.
-  DRV8461_REG_CTRL3        = 0x06,            // Control register 3.
-  DRV8461_REG_CTRL4        = 0x07,            // Control register 4.
-  DRV8461_REG_CTRL5        = 0x08,            // Control register 5.
-  DRV8461_REG_CTRL6        = 0x09,            // Control register 6.
-  DRV8461_REG_CTRL7        = 0x0A,            // Control register 7.
-  DRV8461_REG_CTRL8        = 0x0B,            // Control register 8.
-  DRV8461_REG_CTRL9        = 0x0C,            // Control register 9.
-  DRV8461_REG_CTRL10       = 0x0D,            // Control Register 10.
-  DRV8461_REG_CTRL11       = 0x0E,            // Control Register 11.
-  DRV8461_REG_CTRL12       = 0x0F,            // Control Register 12.
-  DRV8461_REG_CTRL13       = 0x10,            // Control Register 13.
-  DRV8461_REG_INDEX1       = 0x11,            // Index Register 1.
-  DRV8461_REG_INDEX2       = 0x12,            // Index Register 2.
-  DRV8461_REG_INDEX3       = 0x13,            // Index Register 3.
-  DRV8461_REG_INDEX4       = 0x14,            // Index Register 4.
-  DRV8461_REG_INDEX5       = 0x15,            // Index Register 5.
-  DRV8461_REG_CUSTOM_CTRL1 = 0x16,            // Custom Microstep Register 1.
-  DRV8461_REG_CUSTOM_CTRL2 = 0x17,            // Custom Microstep Register 2
-  DRV8461_REG_CUSTOM_CTRL3 = 0x18,            // Custom Microstep Register 3
-  DRV8461_REG_CUSTOM_CTRL4 = 0x19,            // Custom Microstep Register 4
-  DRV8461_REG_CUSTOM_CTRL5 = 0x1A,            // Custom Microstep Register 5
-  DRV8461_REG_CUSTOM_CTRL6 = 0x1B,            // Custom Microstep Register 6
-  DRV8461_REG_CUSTOM_CTRL7 = 0x1C,            // Custom Microstep Register 7
-  DRV8461_REG_CUSTOM_CTRL8 = 0x1D,            // Custom Microstep Register 8
-  DRV8461_REG_CUSTOM_CTRL9 = 0x1E,            // Custom Microstep Register 9
-  DRV8461_REG_ATQ_CTRL1    = 0x1F,            // Auto Torque Register 1.
-  DRV8461_REG_ATQ_CTRL2    = 0x20,            // Auto Torque Register 2.
-  DRV8461_REG_ATQ_CTRL3    = 0x21,            // Auto Torque Register 3.
-  DRV8461_REG_ATQ_CTRL4    = 0x22,            // Auto Torque Register 4.
-  DRV8461_REG_ATQ_CTRL5    = 0x23,            // Auto Torque Register 5.
-  DRV8461_REG_ATQ_CTRL6    = 0x24,            // Auto Torque Register 6.
-  DRV8461_REG_ATQ_CTRL7    = 0x25,            // Auto Torque Register 7.
-  DRV8461_REG_ATQ_CTRL8    = 0x26,            // Auto Torque Register 8.
-  DRV8461_REG_ATQ_CTRL9    = 0x27,            // Auto Torque Register 9.
-  DRV8461_REG_ATQ_CTRL10   = 0x28,            // Auto Torque Register 10.
-  DRV8461_REG_ATQ_CTRL11   = 0x29,            // Auto Torque Register 11.
-  DRV8461_REG_ATQ_CTRL12   = 0x2A,            // Auto Torque Register 12.
-  DRV8461_REG_ATQ_CTRL13   = 0x2B,            // Auto Torque Register 13.
-  DRV8461_REG_ATQ_CTRL14   = 0x2C,            // Auto Torque Register 14.
-  DRV8461_REG_ATQ_CTRL15   = 0x2D,            // Auto Torque Register 15.
-  DRV8461_REG_ATQ_CTRL16   = 0x2E,            // Auto Torque Register 16.
-  DRV8461_REG_ATQ_CTRL17   = 0x2F,            // Auto Torque Register 17.
-  DRV8461_REG_ATQ_CTRL18   = 0x30,            // Auto Torque Register 18.
-  DRV8461_REG_SS_CTRL1     = 0x31,            // Silent Step Register 1.
-  DRV8461_REG_SS_CTRL2     = 0x32,            // Silent Step Register 2.
-  DRV8461_REG_SS_CTRL3     = 0x33,            // Silent Step Register 3.
-  DRV8461_REG_SS_CTRL4     = 0x34,            // Silent Step Register 4.
-  DRV8461_REG_SS_CTRL5     = 0x35,            // Silent Step Register 5.
-  DRV8461_REG_CTRL14       = 0x3C,            // Control Register 14.
-};
-
-
-///FAULT
-// FAULT REGISTER SETINGS ********************************************************************************************// 
-enum class DRV8461_FAULT_Reg_Val : uint8_t {
-  DRV8461_FAULT_FAULT = 0x80,          // Fault bit is high when nFAULT output is low.
-  DRV8461_FAULT_SPI_ERR = 0x40,        // Indicates SPI protocol errors.
-  DRV8461_FAULT_UVLO = 0x20,           // Indicates undervoltage lockout fault condition.
-  DRV8461_FAULT_CPUV = 0x10,           // Indicates charge pump undervoltage fault condition.
-  DRV8461_FAULT_OCP = 0x08,            // Indicates overcurrent fault condition.
-  DRV8461_FAULT_STL = 0x04,            // Indicates motor stall condition.
-  DRV8461_FAULT_TF = 0x02,             // Indicates overtemperature warning/shutdown condition.
-  DRV8461_FAULT_OL = 0x01,             // Indicates open-load condition.
-};
-
-
-
-
-///DIAG
-// DIAG STATUS 1 REGISTER SETINGS ************************************************************************************// 
-enum class DRV8461_DIAG1_Reg_Val : uint8_t {
-  DRV8461_DIAG1_OCP_LS2_B = 0x80,      // Indicates overcurrent fault on the low-side FET of half bridge 2 in BOUT.
-  DRV8461_DIAG1_OCP_HS2_B = 0x40,      // Indicates overcurrent fault on the high-side FET of half bridge 2 in BOUT.
-  DRV8461_DIAG1_OCP_LS1_B = 0x20,      // Indicates overcurrent fault on the low-side FET of half bridge 1 in BOUT.
-  DRV8461_DIAG1_OCP_HS1_B = 0x10,      // Indicates overcurrent fault on the high-side FET of half bridge 1 in BOUT.
-  DRV8461_DIAG1_OCP_LS2_A = 0x08,      // Indicates overcurrent fault on the low-side FET of half bridge 2 in AOUT.
-  DRV8461_DIAG1_OCP_HS2_A = 0x04,      // Indicates overcurrent fault on the high-side FET of half bridge 2 in AOUT.
-  DRV8461_DIAG1_OCP_LS1_A = 0x02,      // Indicates overcurrent fault on the low-side FET of half bridge 1 in AOUT.
-  DRV8461_DIAG1_OCP_HS1_A = 0x01,      // Indicates overcurrent fault on the high-side FET of half bridge 1 in AOUT.
-};
-
-
-// DIAG STATUS 2 REGISTER SETINGS ************************************************************************************// 
-enum class DRV8461_DIAG2_Reg_Val : uint8_t {
-  DRV8461_DIAG2_STSL = 0x80,           // Indicates operating in standstill power saving mode
-  DRV8461_DIAG2_OTW = 0x40,            // Indicates overtemperature warning.
-  DRV8461_DIAG2_OTS = 0x20,            // Indicates overtemperature shutdown.
-  DRV8461_DIAG2_STL_LRN_OK = 0x10,     // Indicates stall detection learning is successful.
-  DRV8461_DIAG2_STALL = 0x08,          // Indicates motor stall condition.
-  DRV8461_DIAG2_OL_B = 0x02,           // Indicates open-load detection on BOUT.
-  DRV8461_DIAG2_OL_A = 0x01,           // Indicates open-load detection on AOUT
-};
-
-
-// DIAG STATUS 3 REGISTER SETINGS ************************************************************************************// 
-enum class DRV8461_DIAG3_Reg_Val : uint8_t {
-  DRV8461_DIAG3_NHOME = 0x40,          // Indicates indexer is at a position other than home.
-  DRV8461_DIAG3_CNT_OFLW = 0x20,       // Indicates ATQ_CNT is more than ATQ_UL.
-  DRV8461_DIAG3_CNT_UFLW = 0x10,       // Indicates ATQ_CNT is less than ATQ_LL.
-  DRV8461_DIAG3_NPOR = 0x02,           // Low indicates a prior VCC UVLO event, High indicates that NPOR has been cleared by CLR_FLT or nSLEEP after a VCC UVLO.
-};
-
-
+#include <cstdint>
 
 //CONTROL
 // CONTROL 1 REGISTER SETINGS ************************************************************************************// 
@@ -909,7 +794,6 @@ enum class DRV8461_Supply_Voltage : uint8_t {
   DRV8461_VM_ADC_24 = 0b01011,         // Supply Voltage 24V
   DRV8461_VM_ADC_65 = 0b11111,         // Supply Voltage 65V
 };
-
 
 
 #endif
