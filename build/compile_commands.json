@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/kazumasamiura/VSCode/DRV8461-Custom-Driver/build",
+  "command": "/usr/bin/clang++  -I/Users/kazumasamiura/VSCode/DRV8461-Custom-Driver/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/DRV8461_Custom_Driver.dir/src/main.cpp.o -c /Users/kazumasamiura/VSCode/DRV8461-Custom-Driver/src/main.cpp",
+  "file": "/Users/kazumasamiura/VSCode/DRV8461-Custom-Driver/src/main.cpp"
+}
+]

@@ -5,7 +5,7 @@
 
 #include <cstdint>
 
-#include "DRV8461_Register_Fault"
+#include "DRV8461_Register_Fault.h"
 #include "DRV8461_Register_Diag.h"
 #include "DRV8461_Register_CTRL.h"
 
