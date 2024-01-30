@@ -18,16 +18,16 @@
 ///FROM POLOLU FILE**********************************************
 
 /// This class provides low-level functions for reading and writing from the SPI
-/// interface of a DRV8434S stepper motor controller IC.
+/// interface of a DRV8461 stepper motor controller IC.
 ///
 /// Most users should use the HighPowerStepperDriver class, which provides a
 /// higher-level interface, instead of this class.
-class DRV8434SSPI
+class DRV8461SPI
 {
 public:
   /// Configures this object to use the specified pin as a chip select pin.
   ///
-  /// You must use a chip select pin; the DRV8434S requires it.
+  /// You must use a chip select pin; the DRV8461 requires it.
   void setChipSelectPin(uint8_t pin)
   {
     csPin = pin;
@@ -106,7 +106,7 @@ public:
 
   /// The status reported by the driver during the last read or write.  This
   /// status is the same as that which would be returned by reading the FAULT
-  /// register with DRV8434S::readFault(), except the upper two bits are always
+  /// register with DRV8461::readFault(), except the upper two bits are always
   /// 1.
   uint8_t lastStatus = 0;
 };
@@ -114,13 +114,13 @@ public:
 
 
 
-/// This class provides high-level functions for controlling a DRV8461, labelled 8434S stepper
+/// This class provides high-level functions for controlling a DRV8461, labelled 8461 stepper
 /// motor driver.
-class DRV8434S
+class DRV8461
 {
 public:
   /// The default constructor.
-  DRV8434S()   //Purpose Unknown
+  DRV8461()   //Purpose Unknown
   {
     // All settings set to power-on defaults
     ctrl1  = 0x0F;
@@ -301,7 +301,7 @@ public:
   ///
   /// Example usage:
   /// ~~~{.cpp}
-  /// sd.setDecayMode(DRV8434SDecayMode::DRV8461_DECAY_SLOW_SLOW);
+  /// sd.setDecayMode(DRV8461DecayMode::DRV8461_DECAY_SLOW_SLOW);
   /// ~~~
   void setDecayMode(DRV8461_Decay_Mode mode)
   {
@@ -393,7 +393,7 @@ public:
   ///
   /// Example usage:
   /// ~~~{.cpp}
-  /// sd.setStepMode(DRV8434SStepMode::MicroStep32);
+  /// sd.setStepMode(DRV8461StepMode::MicroStep32);
   /// ~~~
   void setStepMode(DRV8461_Micostep_Mode mode)
   {
@@ -444,11 +444,11 @@ public:
   /// The return value is an 8-bit unsigned integer that has one bit for each
   /// FAULT condition.  You can simply compare the return value to 0 to see if
   /// any of the bits are set, or you can use the logical AND operator (`&`) and
-  /// the #DRV8434SFaultBit enum to check individual bits.
+  /// the #DRV8461FaultBit enum to check individual bits.
   ///
   /// Example usage:
   /// ~~~{.cpp}
-  /// if (sd.readFault() & (1 << (uint8_t)DRV8434SFaultBit::UVLO))
+  /// if (sd.readFault() & (1 << (uint8_t)DRV8461FaultBit::UVLO))
   /// {
   ///   // Supply undervoltage lockout is active.
   /// }
@@ -463,7 +463,7 @@ public:
   /// The return value is an 8-bit unsigned integer that has one bit for each
   /// DIAG1 condition.  You can simply compare the return value to 0 to see if
   /// any of the bits are set, or you can use the logical AND operator (`&`) and
-  /// the #DRV8434SDiag1Bit enum to check individual bits.
+  /// the #DRV8461Diag1Bit enum to check individual bits.
   uint8_t readDiag1()
   {
     return driver.readReg(DRV8461_REG_ADDR::DRV8461_REG_DIAG1);
@@ -474,7 +474,7 @@ public:
   /// The return value is an 8-bit unsigned integer that has one bit for each
   /// DIAG2 condition.  You can simply compare the return value to 0 to see if
   /// any of the bits are set, or you can use the logical AND operator (`&`) and
-  /// the #DRV8434SDiag2Bit enum to check individual bits.
+  /// the #DRV8461Diag2Bit enum to check individual bits.
   uint8_t readDiag2()
   {
     return driver.readReg(DRV8461_REG_ADDR::DRV8461_REG_DIAG2);
@@ -482,7 +482,7 @@ public:
 
 
 
-//Reads the Mechanical Load Torque status.
+ //Reads the Mechanical Load Torque status.
   uint8_t readLoadTorque()
   {
     return driver.readReg(DRV8461_REG_ADDR::DRV8461_REG_ATQ;_CTRL1)
@@ -518,7 +518,7 @@ public:
   /// the settings being written to the driver, so if you are using
   /// verifySettings(), applySettings(), and/or any of the other functions for
   /// specific settings that this library provides, you should use this function
-  /// for direct register accesses instead of calling DRV8434SSPI::writeReg()
+  /// for direct register accesses instead of calling DRV8461SPI::writeReg()
   /// directly.
   void setReg(DRV8461_REG_ADDR address, uint8_t value)
   {
@@ -607,7 +607,7 @@ public:
   /// High-Power Stepper Motor Driver, but you might want to use it to access
   /// more advanced settings that the HighPowerStepperDriver class does not
   /// provide functions for.
-  DRV8434SSPI driver;
+  DRV8461SPI driver;
 };
 
 
